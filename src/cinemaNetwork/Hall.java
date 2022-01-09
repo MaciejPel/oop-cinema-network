@@ -6,8 +6,8 @@ public class Hall extends DatabaseObject{
     private typeOfHall type;
     List<List<Integer>> listOfLists;
 
-    public Hall(String name, int id, int numberOfSeats, typeOfHall type, List<List<Integer>> listOfLists) {
-        super(name, id);
+    public Hall(String name, int numberOfSeats, typeOfHall type, List<List<Integer>> listOfLists) {
+        super(name);
         this.numberOfSeats = numberOfSeats;
         this.type = type;
         this.listOfLists = listOfLists;

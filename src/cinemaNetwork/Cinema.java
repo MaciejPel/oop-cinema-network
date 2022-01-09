@@ -8,8 +8,8 @@ public class Cinema extends DatabaseObject{
     private ArrayList<Hall> halls;
     private int phone;
 
-    public Cinema(String name, int id, String address, ArrayList<Employee> employees, ArrayList<Seance> seances, ArrayList<Hall> halls, int phone) {
-        super(name, id);
+    public Cinema(String name, String address, ArrayList<Employee> employees, ArrayList<Seance> seances, ArrayList<Hall> halls, int phone) {
+        super(name);
         this.address = address;
         this.employees = employees;
         this.seances = seances;

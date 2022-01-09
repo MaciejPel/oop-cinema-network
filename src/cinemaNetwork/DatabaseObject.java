@@ -4,14 +4,12 @@ public abstract class DatabaseObject {
     private int id;
     private String name;
 //    ?
+    private static int idNumerator;
 
-    public static void main(String[] args){
-//        main class
-    }
-
-    public DatabaseObject(String name, int id) {
-        this.id = id;
+    public DatabaseObject(String name) {
+        this.id = idNumerator;
         this.name = name;
+        idNumerator ++;
     }
 
     public int getId() {

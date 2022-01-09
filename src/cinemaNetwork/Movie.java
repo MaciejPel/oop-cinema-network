@@ -9,8 +9,8 @@ public class Movie extends DatabaseObject {
     private Filmmaker director;
     private int duration;
 
-    public Movie(String name, int id, String title, Date premiere, ArrayList<Filmmaker> actors, Filmmaker director, int duration) {
-        super(name, id);
+    public Movie(String name, String title, Date premiere, ArrayList<Filmmaker> actors, Filmmaker director, int duration) {
+        super(name);
         this.title = title;
         this.premiere = premiere;
         this.actors = actors;

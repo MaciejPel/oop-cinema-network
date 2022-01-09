@@ -6,8 +6,8 @@ public class Seance extends DatabaseObject {
     private Hall hall;
     private double price;
 
-    public Seance(String name, int id, Date date, Movie movie, Hall hall, double price) {
-        super(name, id);
+    public Seance(String name, Date date, Movie movie, Hall hall, double price) {
+        super(name);
         this.date = date;
         this.movie = movie;
         this.hall = hall;
