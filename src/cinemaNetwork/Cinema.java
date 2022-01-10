@@ -4,16 +4,16 @@ import java.util.ArrayList;
 public class Cinema extends DatabaseObject{
     private String address;
     private ArrayList<Employee> employees;
-    private ArrayList<Seance> seances;
     private ArrayList<Hall> halls;
+    private ArrayList<Seance> seances;
     private int phone;
 
-    public Cinema(String name, String address, ArrayList<Employee> employees, ArrayList<Seance> seances, ArrayList<Hall> halls, int phone) {
+    public Cinema(String name, String address, ArrayList<Employee> employees, ArrayList<Hall> halls, ArrayList<Seance> seances, int phone) {
         super(name);
         this.address = address;
         this.employees = employees;
-        this.seances = seances;
         this.halls = halls;
+        this.seances = seances;
         this.phone = phone;
     }
 
@@ -33,20 +33,20 @@ public class Cinema extends DatabaseObject{
         this.employees = employees;
     }
 
-    public ArrayList<Seance> getSeances() {
-        return seances;
-    }
-
-    public void setSeances(ArrayList<Seance> seances) {
-        this.seances = seances;
-    }
-
     public ArrayList<Hall> getHalls() {
         return halls;
     }
 
     public void setHalls(ArrayList<Hall> halls) {
         this.halls = halls;
+    }
+
+    public ArrayList<Seance> getSeances() {
+        return seances;
+    }
+
+    public void setSeances(ArrayList<Seance> seances) {
+        this.seances = seances;
     }
 
     public int getPhone() {

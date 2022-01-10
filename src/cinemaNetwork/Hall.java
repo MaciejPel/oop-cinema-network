@@ -4,9 +4,9 @@ import java.util.List;
 public class Hall extends DatabaseObject{
     private int numberOfSeats;
     private typeOfHall type;
-    List<List<Integer>> listOfLists;
+    List<Pair<Integer, Integer>> listOfLists;
 
-    public Hall(String name, int numberOfSeats, typeOfHall type, List<List<Integer>> listOfLists) {
+    public Hall(String name, int numberOfSeats, typeOfHall type, List<Pair<Integer, Integer>> listOfLists) {
         super(name);
         this.numberOfSeats = numberOfSeats;
         this.type = type;
@@ -29,11 +29,11 @@ public class Hall extends DatabaseObject{
         this.type = type;
     }
 
-    public List<List<Integer>> getListOfLists() {
+    public List<Pair<Integer, Integer>> getListOfLists() {
         return listOfLists;
     }
 
-    public void setListOfLists(List<List<Integer>> listOfLists) {
+    public void setListOfLists(List<Pair<Integer, Integer>> listOfLists) {
         this.listOfLists = listOfLists;
     }
 }
