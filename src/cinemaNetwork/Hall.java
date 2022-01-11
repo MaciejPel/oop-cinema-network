@@ -2,23 +2,13 @@ package cinemaNetwork;
 import java.util.List;
 
 public class Hall extends DatabaseObject{
-    private int numberOfSeats;
     private typeOfHall type;
-    List<Pair<Integer, Integer>> listOfLists;
+    List<Row<Integer, Integer>> listOfLists;
 
-    public Hall(String name, int numberOfSeats, typeOfHall type, List<Pair<Integer, Integer>> listOfLists) {
+    public Hall(String name, typeOfHall type, List<Row<Integer, Integer>> listOfLists) {
         super(name);
-        this.numberOfSeats = numberOfSeats;
         this.type = type;
         this.listOfLists = listOfLists;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
     }
 
     public typeOfHall getType() {
@@ -29,11 +19,11 @@ public class Hall extends DatabaseObject{
         this.type = type;
     }
 
-    public List<Pair<Integer, Integer>> getListOfLists() {
+    public List<Row<Integer, Integer>> getListOfLists() {
         return listOfLists;
     }
 
-    public void setListOfLists(List<Pair<Integer, Integer>> listOfLists) {
+    public void setListOfLists(List<Row<Integer, Integer>> listOfLists) {
         this.listOfLists = listOfLists;
     }
 }

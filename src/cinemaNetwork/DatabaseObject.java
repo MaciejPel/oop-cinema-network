@@ -4,7 +4,7 @@ public abstract class DatabaseObject {
     private int id;
     private String name;
 //    ?
-    private static int idNumerator;
+    private static int idNumerator = 1;
 
     public DatabaseObject(String name) {
         this.id = idNumerator;

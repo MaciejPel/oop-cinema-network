@@ -33,12 +33,20 @@ public class Cinema extends DatabaseObject{
         this.employees = employees;
     }
 
+    public void addEmployee(Employee employee) {
+        this.employees.add(employee);
+    }
+
     public ArrayList<Hall> getHalls() {
         return halls;
     }
 
     public void setHalls(ArrayList<Hall> halls) {
         this.halls = halls;
+    }
+
+    public void addHall(Hall hall) {
+        this.halls.add(hall);
     }
 
     public ArrayList<Seance> getSeances() {
