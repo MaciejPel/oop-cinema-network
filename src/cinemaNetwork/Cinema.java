@@ -57,6 +57,10 @@ public class Cinema extends DatabaseObject{
         this.seances = seances;
     }
 
+    public void addSeance(Seance seance) {
+        this.seances.add(seance);
+    }
+
     public int getPhone() {
         return phone;
     }

@@ -4,8 +4,8 @@ public class Filmmaker extends Person{
     private Country origin;
     private typeOfRole defaultRole;
 
-    public Filmmaker(String name, Country origin, typeOfRole defaultRole) {
-        super(name);
+    public Filmmaker(String name, Date dateOfBirth, Country origin, typeOfRole defaultRole) {
+        super(name, dateOfBirth);
         this.origin = origin;
         this.defaultRole = defaultRole;
     }

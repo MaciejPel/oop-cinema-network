@@ -4,10 +4,10 @@ public class Date {
     private int day;
     private int month;
     private int year;
-    private int hour;
-    private int minute;
+    private Integer hour;
+    private Integer minute;
 
-    public Date(int day, int month, int year, int hour, int minute) {
+    public Date(int year, int month, int day, Integer hour, Integer minute) {
         this.day = day;
         this.month = month;
         this.year = year;
@@ -39,19 +39,19 @@ public class Date {
         this.year = year;
     }
 
-    public int getHour() {
+    public Integer getHour() {
         return hour;
     }
 
-    public void setHour(int hour) {
+    public void setHour(Integer hour) {
         this.hour = hour;
     }
 
-    public int getMinute() {
+    public Integer getMinute() {
         return minute;
     }
 
-    public void setMinute(int minute) {
+    public void setMinute(Integer minute) {
         this.minute = minute;
     }
 }

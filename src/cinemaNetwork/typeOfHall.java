@@ -13,23 +13,16 @@ public enum typeOfHall {
         this.indexNumber = indexNumber;
     }
 
-    public String displayName() { return displayName; }
+    public String getName() { return displayName; }
 
-    public int getByIndex() {
-        return indexNumber;
-    }
+    public int getIndex() { return indexNumber; }
 
     public static typeOfHall retrieveByIndex(int n) {
         for (typeOfHall hall : typeOfHall.values()) {
-            if (hall.getByIndex() == n) {
+            if (hall.getIndex() == n) {
                 return hall;
             }
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return "\t" + indexNumber + ". " + displayName;
     }
 }

@@ -3,8 +3,8 @@ package cinemaNetwork;
 public class Employee extends Person{
     private typeOfPosition position;
 
-    public Employee(String name, typeOfPosition position) {
-        super(name);
+    public Employee(String name, typeOfPosition position, Date dateOfBirth) {
+        super(name ,dateOfBirth);
         this.position = position;
     }
 

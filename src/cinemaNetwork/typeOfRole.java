@@ -14,23 +14,18 @@ public enum typeOfRole {
         this.indexNumber = indexNumber;
     }
 
-    public String displayName() { return displayName; }
+    public String getName() { return displayName; }
 
-    public int getByIndex() {
+    public int getIndex() {
         return indexNumber;
     }
 
     public static typeOfRole retrieveByIndex(int n) {
         for (typeOfRole role : typeOfRole.values()) {
-            if (role.getByIndex() == n) {
+            if (role.getIndex() == n) {
                 return role;
             }
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return "\t" + indexNumber + ". " + displayName;
     }
 }

@@ -13,23 +13,18 @@ public enum typeOfPosition {
         this.indexNumber = indexNumber;
     }
 
-    public String displayName() { return displayName; }
+    public String getName() { return displayName; }
 
-    public int getByIndex() {
+    public int getIndex() {
         return indexNumber;
     }
 
     public static typeOfPosition retrieveByIndex(int n) {
         for (typeOfPosition position : typeOfPosition.values()) {
-            if (position.getByIndex() == n) {
+            if (position.getIndex() == n) {
                 return position;
             }
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return "\t" + indexNumber + ". " + displayName;
     }
 }
