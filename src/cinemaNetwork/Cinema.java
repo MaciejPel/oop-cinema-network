@@ -68,4 +68,27 @@ public class Cinema extends DatabaseObject{
     public void setPhone(int phone) {
         this.phone = phone;
     }
+
+    public String toString(){
+         String s = "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName: " + this.getName() + "\n\tAddress: " + this.getAddress() + "\n\tPhone: " + this.getPhone();
+
+         s+="\n\tEmployees: [";
+         for(Employee i: this.employees){
+             s+= i.toString()+", ";
+         }
+        s+="] ";
+
+        s+="\n\tHalls: [";
+        for(Hall i: this.halls){
+            s+= i.toString()+", ";
+        }
+        s+="] ";
+
+        s+="\n\tSeances: [";
+        for(Seance i: this.seances){
+            s+= i.toString()+", ";
+        }
+        s+="]\n]";
+        return s;
+    }
 }

@@ -3,12 +3,12 @@ import java.util.List;
 
 public class Hall extends DatabaseObject{
     private typeOfHall type;
-    List<Row<Integer, Integer>> listOfLists;
+    List<Row<Integer, Integer>> listOfSeats;
 
-    public Hall(String name, typeOfHall type, List<Row<Integer, Integer>> listOfLists) {
+    public Hall(String name, typeOfHall type, List<Row<Integer, Integer>> listOfSeats) {
         super(name);
         this.type = type;
-        this.listOfLists = listOfLists;
+        this.listOfSeats = listOfSeats;
     }
 
     public typeOfHall getType() {
@@ -19,11 +19,20 @@ public class Hall extends DatabaseObject{
         this.type = type;
     }
 
-    public List<Row<Integer, Integer>> getListOfLists() {
-        return listOfLists;
+    public List<Row<Integer, Integer>> getListOfSeats() {
+        return listOfSeats;
     }
 
-    public void setListOfLists(List<Row<Integer, Integer>> listOfLists) {
-        this.listOfLists = listOfLists;
+    public void setListOfSeats(List<Row<Integer, Integer>> listOfSeats) {
+        this.listOfSeats = listOfSeats;
+    }
+
+    public String toString(){
+        String s= "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName: " + this.getName() + "\n\tType of hall: " + this.getType().getName() + "\n\tList of seats: [";
+        for(Row i : this.listOfSeats){
+            s+= "Row "+i.getRowNumber()+"- "+i.getNumberOfSeats()+", ";
+        }
+        s+="]\n]";
+        return s;
     }
 }

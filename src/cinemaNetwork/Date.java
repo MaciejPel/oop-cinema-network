@@ -54,4 +54,8 @@ public class Date {
     public void setMinute(Integer minute) {
         this.minute = minute;
     }
+
+    public String toString(){
+        return this.getYear()+"-"+this.getMonth()+"-"+this.getDay()+" "+(this.getHour()==null?"00":this.getHour())+":"+(this.getMinute()==null?"00":this.getMinute());
+    }
 }

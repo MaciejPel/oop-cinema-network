@@ -2,15 +2,16 @@ package cinemaNetwork;
 
 import java.util.ArrayList;
 
-public class Movie extends DatabaseObject {
+public class Movie extends DatabaseObject implements Displayable {
+
     private String title;
     private Date premiere;
     private ArrayList<Filmmaker> actors;
     private Filmmaker director;
     private int duration;
 
-    public Movie(String name, String title, Date premiere, ArrayList<Filmmaker> actors, Filmmaker director, int duration) {
-        super(name);
+    public Movie(String title, Date premiere, ArrayList<Filmmaker> actors, Filmmaker director, int duration) {
+        super(title);
         this.title = title;
         this.premiere = premiere;
         this.actors = actors;
@@ -56,5 +57,19 @@ public class Movie extends DatabaseObject {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void play() {
+        System.out.println("Tutaj leci film");
+    }
+
+    public String toString(){
+        String s= "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName/Title: " + this.getName() + "\n\tDate: " + this.getPremiere().toString()+ "\n\tDirector: " + (this.getDirector()==null?"":this.getDirector().toString())+ "\n\tDuration: " + this.getDuration();
+        s+="\n\tActors: [";
+        for(Filmmaker i: this.actors){
+            s+= i.toString()+", ";
+        }
+        s+="]\n]";
+        return s;
     }
 }

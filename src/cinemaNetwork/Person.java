@@ -7,4 +7,13 @@ public abstract class Person extends DatabaseObject{
         super(name);
         this.dateOfBirth= dateOfBirth;
     }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
 }

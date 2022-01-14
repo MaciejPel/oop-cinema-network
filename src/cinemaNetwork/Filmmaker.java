@@ -25,4 +25,8 @@ public class Filmmaker extends Person{
     public void setDefaultRole(typeOfRole defaultRole) {
         this.defaultRole = defaultRole;
     }
+
+    public String toString(){
+        return "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName: " + this.getName()+ "\n\tOrigin: " +this.getOrigin()+ "\n\tDefault Role: " +this.getDefaultRole()+"\n]";
+    }
 }
