@@ -43,6 +43,10 @@ public class Movie extends DatabaseObject implements Displayable {
         this.actors = actors;
     }
 
+    public void addActor(Filmmaker filmmaker) {
+        this.actors.add(filmmaker);
+    }
+
     public Filmmaker getDirector() {
         return director;
     }

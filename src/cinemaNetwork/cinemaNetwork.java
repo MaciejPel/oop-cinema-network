@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class cinemaNetwork {
 
-    private static Hall getHall(){
+    private static Hall requestHall(){
         Scanner s = new Scanner(System.in);
         System.out.println("Hall name:");
         String i1 = s.nextLine();
@@ -28,7 +28,7 @@ public class cinemaNetwork {
         return new Hall(i1, i2, temp2);
     }
 
-    private static Filmmaker getFilmmaker(){
+    private static Filmmaker requestFilmmaker(){
         Scanner s = new Scanner(System.in);
         System.out.println("Filmmaker name:");
         String i1 = s.nextLine();
@@ -53,7 +53,7 @@ public class cinemaNetwork {
         return new Filmmaker(i1, filmmakerDate, i3, i2);
     }
 
-    public static Employee getEmployee(){
+    private static Employee requestEmployee(){
         Scanner s = new Scanner(System.in);
         System.out.println("Employee name:");
         String i1 = s.nextLine();
@@ -72,7 +72,7 @@ public class cinemaNetwork {
         return new Employee(i1, i3, employeeDate);
     }
 
-    public static Movie getMovie(){
+    private static Movie requestMovie(){
         Scanner s = new Scanner(System.in);
         System.out.println("Movie name:");
         String i1 = s.nextLine();
@@ -88,7 +88,7 @@ public class cinemaNetwork {
         return new Movie(i1, premiere, new ArrayList<>(), null, i3);
     }
 
-    public static Seance getSeance(){
+    private static Seance requestSeance(){
         Scanner s = new Scanner(System.in);
         System.out.println("Seance name:");
         String i1 = s.nextLine();
@@ -102,45 +102,96 @@ public class cinemaNetwork {
         s.nextLine();
 
         Hall hall= null;
-        System.out.println("Add a hall? [T/N]");
-        if(s.nextLine().equals("T")){
-            hall=getHall();
+        System.out.println("Add a hall? [Y/N]");
+        if(s.nextLine().equals("Y")){
+            hall= requestHall();
             System.out.println("New hall added.");
         }
+        ArrayList<Advertisement> advertisements=new ArrayList<>();
+        System.out.println("Add advertisement? [Y/N]");
+        if(s.nextLine().equals("Y")){
+            do {
+                advertisements.add(requestAdvertisement());
+                System.out.println("Advertisement added. Add another one? [Y/N]");
+            } while (!s.nextLine().equals("N"));
+        }
         Movie movie=null;
-        System.out.println("Add a movie? [T/N]");
-        if(s.nextLine().equals("T")){
-            movie=getMovie();
+        System.out.println("Add a movie? [Y/N]");
+        if(s.nextLine().equals("Y")){
+            movie= requestMovie();
             System.out.println("New movie added.");
         }
-        return new Seance(i1, seanceDate, movie, hall, i4);
+        return new Seance(i1, seanceDate, movie, advertisements, hall, i4);
+    }
+
+    private static Advertisement requestAdvertisement(){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Advertisement name:");
+        String i1 = s.nextLine();
+
+        System.out.println("Provide advertisement duration in seconds:");
+        int i2 = s.nextInt();
+        s.nextLine();
+
+        return new Advertisement(i1, i2);
+    }
+
+    private static DatabaseObject findObjectById(int ID, ArrayList<DatabaseObject> data){
+        for(DatabaseObject i: data){
+            if(i.getId()==ID){
+                return i;
+            }
+        }
+        return null;
+    }
+
+    private static void listObjectsOfGivenType(String type, ArrayList<DatabaseObject> data){
+        for(DatabaseObject i:data){
+            if(i.getClass().getSimpleName().equals(type)){
+                System.out.println("\t"+i.getId()+". "+i.getName());
+            }
+        }
     }
 
     public static void main(String[] args) {
-        ArrayList<DatabaseObject> data = new ArrayList<>();
 
-        ArrayList<Employee> emptye  = new ArrayList<>();
-        ArrayList<Hall> emptyh= new ArrayList<>();
-        ArrayList<Seance> emptys= new ArrayList<>();
-        ArrayList<Movie> emptym= new ArrayList<>();
-        ArrayList<Filmmaker> emptya= new ArrayList<>();
-        List<Row<Integer, Integer>> tempex = new ArrayList<>();
-        tempex.add(new Row(1, 5));
-        Hall h = new Hall("h1", typeOfHall.IMAX, tempex);
-        Filmmaker f = new Filmmaker("Woźniak", new Date(2000, 3, 5, null, null), Country.France, typeOfRole.Actor);
-        Movie m=new Movie("m1", new Date(2022, 11, 10,null,null), emptya, f, 150);
-        data.add(h);
-        data.add(f);
-        data.add(m);
-        data.add(new Cinema("n1", "a1", emptye, emptyh, emptys, 123456789));
-        data.add(new Employee("Jacula", typeOfPosition.janitor, new Date(2000,20,10,null,null)));
-        data.add(new Seance("s1", new Date(2022, 12, 20, 15, 15), m, h, 15));
+//        ArrayList<Employee> emptye  = new ArrayList<>();
+//        ArrayList<Hall> emptyh= new ArrayList<>();
+//        ArrayList<Seance> emptys= new ArrayList<>();
+//        ArrayList<Movie> emptym= new ArrayList<>();
+//        ArrayList<Filmmaker> emptya= new ArrayList<>();
+//        List<Row<Integer, Integer>> tempex = new ArrayList<>();
+//        tempex.add(new Row(1, 5));
+//        Hall h = new Hall("h1", typeOfHall.IMAX, tempex);
+//        Filmmaker f = new Filmmaker("Woźniak", new Date(2000, 3, 5, null, null), Country.France, typeOfRole.Actor);
+//        Movie m=new Movie("m1", new Date(2022, 11, 10,null,null), emptya, f, 150);
+//        data.add(h);
+//        data.add(f);
+//        data.add(m);
+//        data.add(new Cinema("n1", "a1", emptye, emptyh, emptys, 123456789));
+//        data.add(new Employee("Jacula", typeOfPosition.janitor, new Date(2000,20,10,null,null)));
+//        data.add(new Seance("s1", new Date(2022, 12, 20, 15, 15), m, h, 15));
 
         Scanner s = new Scanner(System.in);
         System.out.println("Welcome to the cinemaNetwork");
+        ArrayList<DatabaseObject> data = new ArrayList<>();
         boolean state = true;
         while (state) {
-            System.out.println("Select one of listed below commands to continue" +"\nI. Add a new cinema." +"\nII. Add a new employee." +"\nIII. Add a new hall." +"\nIV. Add a new seance." +"\nV. Add a new movie." +"\nVI. Add a new filmmaker." +"\nVII. Delete element by ID." +"\nVIII. Show gathered data info." +"\nIX. Show elements of given type." +"\nX. Search for element by name." +"\nXXX. Exit program.");
+            System.out.println("""
+                    Select one of listed below commands to continue
+                    I. Add a new cinema.
+                    II. Add a new employee.
+                    III. Add a new hall.
+                    IV. Add a new seance.
+                    V. Add a new movie.
+                    VI. Add a new advertisement.
+                    VII. Add a new filmmaker.
+                    VIII. Delete element by ID.
+                    IX. Show gathered data info.
+                    X. Show elements of given type.
+                    XI. Search for element by name.
+                    XII. An operation.
+                    XXX. Exit program.""");
             String line = s.nextLine();
             switch (line) {
                 case "I" -> {
@@ -153,93 +204,118 @@ public class cinemaNetwork {
                     s.nextLine();
 
                     ArrayList<Hall> hall= new ArrayList<>();
-                    System.out.println("Add new hall? [T/N]");
-                    if(s.nextLine().equals("T")){
+                    System.out.println("Add new hall? [Y/N]");
+                    if(s.nextLine().equals("Y")){
                         do {
-                            hall.add(getHall());
-                            System.out.println("New hall added. Add another one? [T/N]");
+                            hall.add(requestHall());
+                            System.out.println("New hall added. Add another one? [Y/N]");
                         } while (!s.nextLine().equals("N"));
                     }
                     ArrayList<Employee> employee= new ArrayList<>();
-                    System.out.println("Add new Employee? [T/N]");
-                    if(s.nextLine().equals("T")){
+                    System.out.println("Add new Employee? [Y/N]");
+                    if(s.nextLine().equals("Y")){
                         do {
-                            employee.add(getEmployee());
-                            System.out.println("New employee added. Add another one? [T/N]");
+                            employee.add(requestEmployee());
+                            System.out.println("New employee added. Add another one? [Y/N]");
                         } while (!s.nextLine().equals("N"));
                     }
                     ArrayList<Seance> seance= new ArrayList<>();
-                    System.out.println("Add new seance? [T/N]");
-                    if(s.nextLine().equals("T")){
+                    System.out.println("Add new seance? [Y/N]");
+                    if(s.nextLine().equals("Y")){
                         do {
-                            seance.add(getSeance());
-                            System.out.println("New seance added. Add another one? [T/N]");
+                            seance.add(requestSeance());
+                            System.out.println("New seance added. Add another one? [Y/N]");
                         } while (!s.nextLine().equals("N"));
                     }
                     data.add(new Cinema(i1, i2, employee, hall, seance, nc3));
                     System.out.println("A new cinema has been added.");
                 }
                 case "II" -> {
-                    data.add(getEmployee());
-                    for(DatabaseObject i: data){
-                        if(i instanceof Cinema){
-                            System.out.println("\t"+i.getId()+". "+i.getName());
-                        }
-                    }
+                    Employee userInput= requestEmployee();
+                    data.add(userInput);
+                    listObjectsOfGivenType("Cinema", data);
                     System.out.println("Type-in cinema's ID");
                     int t=s.nextInt();
                     s.nextLine();
+                    ((Cinema) findObjectById(t, data)).addEmployee(userInput);
                     System.out.println("A new employee have been added.");
                 }
                 case "III"->{
-                    data.add(getHall());
-                    for(DatabaseObject i:data){
-                        if(i instanceof Cinema){
-                            System.out.println("\t"+i.getId()+". "+i.getName());
-                        }
-                    }
+                    Hall userInput= requestHall();
+                    data.add(userInput);
+                    listObjectsOfGivenType("Cinema", data);
                     System.out.println("Type-in cinema's ID");
                     int t=s.nextInt();
                     s.nextLine();
-                    System.out.println("A new hall has been added.");
+                    ((Cinema) findObjectById(t, data)).addHall(userInput);
+                    System.out.println("A new employee have been added.");
                 }
                 case "IV" -> {
-                    data.add(getSeance());
-                    for(DatabaseObject i: data){
-                        if(i instanceof Cinema){
-                            System.out.println("\t"+i.getId()+". "+i.getName());
-                        }
-                    }
+                    Seance userInput= requestSeance();
+                    data.add(userInput);
+                    listObjectsOfGivenType("Cinema", data);
                     System.out.println("Type-in cinema's ID");
                     int t=s.nextInt();
                     s.nextLine();
-                    System.out.println("New seance has been added");
+                    ((Cinema) findObjectById(t, data)).addSeance(userInput);
+                    System.out.println("A new employee have been added.");
                 }
                 case "V"->{
-                    data.add(getMovie());
-                    for(DatabaseObject i: data){
-                        if(i instanceof Seance){
-                            System.out.println("\t"+i.getId()+". "+i.getName());
-                        }
-                    }
+                    Movie userInput= requestMovie();
+                    data.add(userInput);
+                    listObjectsOfGivenType("Seance", data);
                     System.out.println("Type-in seance's ID");
-                    int t = s.nextInt();
-                    s.nextLine();
-                    System.out.println("New movie has been added.");
-                }
-                case "VI"-> {
-                    data.add(getFilmmaker());
-                    System.out.println("Type-in one of available below movie's ID");
-                    for(DatabaseObject i:data){
-                        if(i instanceof Movie){
-                            System.out.println("\t"+i.getId()+". "+i.getName());
-                        }
-                    }
                     int t=s.nextInt();
                     s.nextLine();
+                    ((Seance) findObjectById(t, data)).setMovie(userInput);
+                    System.out.println("A new movie have been added.");
+                }
+                case "VI"->{
+                    Advertisement userInput= requestAdvertisement();
+                    data.add(userInput);
+
+                    System.out.println("Assign ad to seance? [Y/N]");
+                    if(s.nextLine().equals("Y")){
+                        do {
+                            listObjectsOfGivenType("Seance", data);
+                            System.out.println("Type-in seance's ID");
+                            int temp=s.nextInt();
+                            s.nextLine();
+                            ((Seance) findObjectById(temp, data)).addAdvertisement(userInput);
+                            System.out.println("Advertisement assigned. Add another one? [Y/N]");
+                        } while (!s.nextLine().equals("N"));
+                    }
+                    System.out.println("A new advertisement have been added.");
+                }
+                case "VII"-> {
+                    Filmmaker userInput= requestFilmmaker();
+                    data.add(userInput);
+                    if(userInput.getDefaultRole().getName()=="Director"){
+                        System.out.println("Set director to the movie? [Y/N]");
+                        String t=s.nextLine();
+                        if(t.equals("Y")){
+                            System.out.println("Type-in one of available below movie's ID");
+                            listObjectsOfGivenType("Movie", data);
+                            int i=s.nextInt();
+                            s.nextLine();
+                            ((Movie) findObjectById(i, data)).setDirector(userInput);
+                        }
+                    }
+                    if(userInput.getDefaultRole().getName()=="Actor"){
+                        System.out.println("Add actor to the movie? [Y/N]");
+                        String t=s.nextLine();
+                        if(t.equals("Y")){
+                            System.out.println("Type-in one of available below movie's ID");
+                            listObjectsOfGivenType("Movie", data);
+
+                            int i=s.nextInt();
+                            s.nextLine();
+                            ((Movie) findObjectById(i, data)).addActor(userInput);
+                        }
+                    }
                     System.out.println("New filmmaker have been added.");
                 }
-                case "VII"->{
+                case "VIII"->{
                     for(DatabaseObject i:data){
                         System.out.println(i.getId());
                     }
@@ -259,31 +335,30 @@ public class cinemaNetwork {
                         System.out.println("Such element does not yet exist.");
                     }
                 }
-                case "VIII"->{
+                case "IX"->{
                     for(DatabaseObject i: data){
                         System.out.println(i.toString()+",");
                     }
                 }
-                case "IX"->{
-                    String i1=s.nextLine();
-                    for(DatabaseObject i:data){
-                        if(i.getClass().getSimpleName().equals(i1))
-                        System.out.println(i.getName());
-                    }
-                }
                 case "X"->{
+                    System.out.println("Provide one of following types: Cinema, Hall, Movie, Seance, Advertisement, Filmmaker or Employee.");
                     String i1=s.nextLine();
                     for(DatabaseObject i:data){
-                        if(i.getName().contains(i1)){
-                            System.out.println(i.getName());
-                        };
+                        if(i.getClass().getSimpleName().equals(i1)){
+                            System.out.println(i);
+                        }
                     }
                 }
                 case "XI"->{
-                    // Wykonanie operacji zawartej w interfejsie na wszystkich obiektach klas implementujących ten interfejs.
+                    String i1=s.nextLine();
+                    for(DatabaseObject i: data){
+                        if(i.getName().contains(i1)){
+                            System.out.println(i);
+                        }
+                    }
                 }
                 case "XII"->{
-                    // Walidacja wprowadzanych danych liczbowych poprzez obsługę wyjątku przy konwersji
+                    // Wykonanie operacji zawartej w interfejsie na wszystkich obiektach klas implementujących ten interfejs.
                 }
                 case "XXX" -> state = false;
                 default -> System.out.println("There is no functionality of given type. Please try again");

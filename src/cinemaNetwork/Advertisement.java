@@ -1,9 +1,21 @@
 package cinemaNetwork;
 
-public class Advertisement implements Displayable{
+public class Advertisement extends DatabaseObject implements Displayable{
     private int duration;
 
-    public void play() {
-        System.out.println("Tutaj leci reklama");
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Advertisement(String name, int duration) {
+        super(name);
+        this.duration = duration;
+    }
+
+    public void play(){
     }
 }
