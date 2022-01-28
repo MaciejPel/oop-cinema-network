@@ -8,7 +8,6 @@ public abstract class DatabaseObject {
     private Date creationDate;
     private static int idNumerator = 1;
 
-
     public DatabaseObject(String name) {
         this.id = idNumerator;
         this.name = name;

@@ -1,11 +1,19 @@
 package cinemaNetwork;
 
+import java.util.Calendar;
+
 public class Employee extends Person{
     private typeOfPosition position;
 
     public Employee(String name, typeOfPosition position, Date dateOfBirth) {
         super(name, dateOfBirth);
         this.position = position;
+    }
+
+    public boolean isAdult(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int x=this.getDateOfBirth().getYear()-year;
+        return x<18?false:true;
     }
 
     public typeOfPosition getPosition() {

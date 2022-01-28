@@ -102,7 +102,7 @@ public class cinemaNetwork {
         s.nextLine();
 
         Hall hall= null;
-        System.out.println("Add a hall? [Y/N]");
+        System.out.println("Add a new hall to seance? [Y/N]");
         if(s.nextLine().equals("Y")){
             hall= requestHall();
             System.out.println("New hall added.");
