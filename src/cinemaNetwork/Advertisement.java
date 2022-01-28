@@ -16,6 +16,10 @@ public class Advertisement extends DatabaseObject implements Displayable{
         this.duration = duration;
     }
 
-    public void play(){
+    @Override
+    public String toString(){
+        String s= "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName/Title: " + this.getName() + "\n\tDirector: " + "\n\tDuration: " + this.getDuration();
+        s+="\n]";
+        return s;
     }
 }

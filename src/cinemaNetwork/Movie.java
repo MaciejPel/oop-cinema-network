@@ -67,6 +67,7 @@ public class Movie extends DatabaseObject implements Displayable {
         System.out.println("Tutaj leci film");
     }
 
+    @Override
     public String toString(){
         String s= "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName/Title: " + this.getName() + "\n\tDate: " + this.getPremiere().toString()+ "\n\tDirector: " + (this.getDirector()==null?"":this.getDirector().toString())+ "\n\tDuration: " + this.getDuration();
         s+="\n\tActors: [";

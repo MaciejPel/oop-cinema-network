@@ -62,6 +62,7 @@ public class Seance extends DatabaseObject {
         this.price = price;
     }
 
+    @Override
     public String toString(){
         return "[\n\tID: "+ this.getId() + "\n\tType: " + this.getClass().getSimpleName() + "\n\tName: " + this.getName()+ "\n\tMovie: " + (this.getMovie()==null?"":this.getMovie().toString())+ "\n\tDate: " + this.getDate().toString()+ "\n\tHall: " + (this.getHall()==null?"":this.getHall().toString()) + "\n\tPrice: " + this.getPrice()+"\n]";
     }

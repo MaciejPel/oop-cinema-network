@@ -24,6 +24,7 @@ public class Employee extends Person{
         this.position = position;
     }
 
+    @Override
     public String toString(){
         return "[\n\tID: "+this.getId()+ "\n\tType: " +this.getClass().getSimpleName()+ "\n\tName: " +this.getName()+ "\n\tBirth date: " +this.getDateOfBirth().toString()+ "\n\tPosition: " +this.getPosition().getName()+"\n]";
     }
