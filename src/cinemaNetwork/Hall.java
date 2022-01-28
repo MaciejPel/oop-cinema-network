@@ -48,7 +48,7 @@ public class Hall extends DatabaseObject{
         for(Row i : this.listOfSeats){
             s+= "Row "+i.getRowNumber()+"- "+i.getNumberOfSeats()+", ";
         }
-        s+="\n\tSeances: [";
+        s+="]\n\tSeances: [";
         for(Seance i: this.seances){
             s+= i.toString()+", ";
         }

@@ -55,6 +55,7 @@ public class Date {
         this.minute = minute;
     }
 
+    @Override
     public String toString(){
         return this.getYear()+"-"+this.getMonth()+"-"+this.getDay()+" "+(this.getHour()==null?"00":this.getHour())+":"+(this.getMinute()==null?"00":this.getMinute());
     }
