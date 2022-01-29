@@ -1,7 +1,5 @@
 package cinemaNetwork;
 
-import java.util.Calendar;
-
 public class Filmmaker extends Person{
     private Country origin;
     private typeOfRole defaultRole;
@@ -10,12 +8,6 @@ public class Filmmaker extends Person{
         super(name, dateOfBirth);
         this.origin = origin;
         this.defaultRole = defaultRole;
-    }
-
-    public boolean isAdult(){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        int x=this.getDateOfBirth().getYear()-year;
-        return x<18?false:true;
     }
 
     public Country getOrigin() {
@@ -32,6 +24,11 @@ public class Filmmaker extends Person{
 
     public void setDefaultRole(typeOfRole defaultRole) {
         this.defaultRole = defaultRole;
+    }
+
+    @Override
+    public String typeInfo() {
+        return "Filmmaker, role: "+this.defaultRole.getName();
     }
 
     @Override

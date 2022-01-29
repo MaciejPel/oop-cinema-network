@@ -1,7 +1,5 @@
 package cinemaNetwork;
 
-import java.util.Calendar;
-
 public class Employee extends Person{
     private typeOfPosition position;
 
@@ -10,18 +8,17 @@ public class Employee extends Person{
         this.position = position;
     }
 
-    public boolean isAdult(){
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        int x=this.getDateOfBirth().getYear()-year;
-        return x<18?false:true;
-    }
-
     public typeOfPosition getPosition() {
         return position;
     }
 
     public void setPosition(typeOfPosition position) {
         this.position = position;
+    }
+
+    @Override
+    public String typeInfo() {
+        return "Employee, position: "+this.position.getName();
     }
 
     @Override
