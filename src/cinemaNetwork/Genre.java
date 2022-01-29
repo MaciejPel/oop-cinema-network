@@ -1,10 +1,10 @@
 package cinemaNetwork;
 
 public enum Genre {
-    France("Horror", 1),
-    Germany("Thriller", 2),
-    Italy("Action", 3),
-    Netherlands("Family", 4),
+    Horror("Horror", 1),
+    Thriller("Thriller", 2),
+    Action("Action", 3),
+    Family("Family", 4),
     Drama("Drama", 5),
     Comedy("Comedy", 6);
 

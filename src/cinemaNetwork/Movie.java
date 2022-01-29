@@ -67,7 +67,7 @@ public class Movie extends DatabaseObject implements Displayable {
 
     @Override
     public boolean isFamilyFriendly() {
-        return this.genre.getName() != "Horror" || this.genre.getName() != "Thriller";
+        return this.genre.getName().equals("Horror") || this.genre.getName().equals("Thriller");
     }
 
     @Override

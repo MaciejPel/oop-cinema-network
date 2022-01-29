@@ -2,15 +2,9 @@ package cinemaNetwork;
 
 public enum Country {
     France("France", 1),
-    Germany("Germany", 2),
-    Italy("Italy", 3),
-    Netherlands("Netherlands", 4),
-    Poland("Poland", 5),
-    Spain("Spain", 6),
-    Sweden("Sweden", 7),
-    Turkey("Turkey", 8),
-    USA("USA", 9),
-    Russia("Russia", 10);
+    Poland("Poland", 2),
+    USA("USA", 3),
+    Russia("Russia", 4);
 
     private String displayName;
     private int indexNumber;

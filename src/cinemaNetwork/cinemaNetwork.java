@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class cinemaNetwork {
 
-    static ArrayList<Integer> tab = new ArrayList<>();
+    private static ArrayList<Integer> tab = new ArrayList<>();
 
     private static DatabaseObject findObjectById(int ID, ArrayList<DatabaseObject> data){
         for(DatabaseObject i: data){

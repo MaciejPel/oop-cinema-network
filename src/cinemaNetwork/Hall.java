@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Hall extends DatabaseObject{
     private typeOfHall type;
-    List<Row<Integer, Integer>> listOfSeats;
-    ArrayList<Seance> seances;
+    private List<Row<Integer, Integer>> listOfSeats;
+    private ArrayList<Seance> seances;
 
     public Hall(String name, typeOfHall type, List<Row<Integer, Integer>> listOfSeats, ArrayList<Seance> seances) {
         super(name);
